@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'League-Spartan-Bold';
+  src: url('<?php echo get_template_directory_uri()?>/fonts/league-spartan/League-Spartan-Bold.ttf.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
