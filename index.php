@@ -42,74 +42,24 @@ get_header();
         <span class="shop__subtitle">Shop</span>
         Surfboards
       </h2>
-    </div>
+		</div>
 
     <div class="container shop-slider-wrapper">
       <div class="shop-slider-special-holder">
         <div id="shopSlider" class="owl-carousel">
-          <div class="shop-slider-item">
-            <div class="shop-slider-item__img">
-              <img class="shop-slider-item__image" src="<?php echo get_template_directory_uri()?>/img/boards/board-1.png" alt="board">
-            </div>
-            <div class="shop-slider-desc">
-              <div class="shop-slider__cat">
-                Funboards
-              </div>
-              <div class="shop-slider__title">
-                Chilli Rare Bird
-              </div>
-              <div class="shop-slider-buy">
-                <div class="shop-slider-buy__price">
-                  $890
-                </div>
-                <div class="shop-slider-buy__link">
-                  Buy
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shop-slider-item">
-            <div class="shop-slider-item__img">
-              <img class="shop-slider-item__image" src="<?php echo get_template_directory_uri()?>/img/boards/board-2.png" alt="board">
-            </div>
-            <div class="shop-slider-desc">
-              <div class="shop-slider__cat">
-                Surfboards
-              </div>
-              <div class="shop-slider__title">
-                Emery NEM XF
-              </div>
-              <div class="shop-slider-buy">
-                <div class="shop-slider-buy__price">
-                  $950
-                </div>
-                <div class="shop-slider-buy__link">
-                  Buy
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shop-slider-item">
-            <div class="shop-slider-item__img">
-              <img class="shop-slider-item__image" src="<?php echo get_template_directory_uri()?>/img/boards/board-3.png" alt="board">
-            </div>
-            <div class="shop-slider-desc">
-              <div class="shop-slider__cat">
-                Funboards
-              </div>
-              <div class="shop-slider__title">
-                Agency GROM
-              </div>
-              <div class="shop-slider-buy">
-                <div class="shop-slider-buy__price">
-                  $670
-                </div>
-                <div class="shop-slider-buy__link">
-                  Buy
-                </div>
-              </div>
-            </div>
-          </div>
+
+					<?php
+						global $post;
+						$args = array(
+							'post_type' => 'boards',
+							'publish' => true
+						);
+						$slider_boards = get_posts($args);
+						foreach ($slider_boards as $post) {
+							include( get_template_directory()  . '/content_boardslider.php');
+						}
+						wp_reset_postdata();
+					?>
         </div>
       </div>
     </div>

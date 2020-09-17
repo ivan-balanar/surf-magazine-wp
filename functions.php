@@ -72,7 +72,7 @@ add_action( 'wp_enqueue_scripts', 'surfing_scripts' );
 
 add_action('init', 'register_post_types');
 function register_post_types(){
-	register_post_type('book', array(
+	$cptArgsArray = array(
 		'labels'             => array(
 			'name'               => 'Boards',
 			'singular_name'      => 'Board',
@@ -86,7 +86,6 @@ function register_post_types(){
 			'not_found_in_trash' => 'Not found in cart',
 			'parent_item_colon'  => '',
 			'menu_name'          => 'Boards'
-
 		  ),
 		'public'             => true,
 		'publicly_queryable' => true,
@@ -106,9 +105,14 @@ function register_post_types(){
       // 'excerpt',
       // 'comments'
       )
-	) );
+    );
+    register_post_type('boards', $cptArgsArray );
 }
 
 // Add prev posts
 
 add_theme_support( 'post-thumbnails' );
+
+if ( function_exists('add_image_size') ){
+  add_image_size('board-slider', 225, 490, true);
+}
